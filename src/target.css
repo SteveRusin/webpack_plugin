@@ -1,0 +1,231 @@
+@-webkit-keyframes show {
+    from {left: -100%;}
+    to {left: 50%;}
+}
+@keyframes show {
+    from {left: -100%;}
+    to {left: 50%;}
+}
+@-webkit-keyframes hide {
+    from {left: 50%;}
+    to {left: 100%;}
+}
+@keyframes hide {
+    from {left: 50%;}
+    to {left: 100%;}
+}
+
+@-webkit-keyframes color {
+    0% {color: rgba(153, 0, 0, .8);}
+    10% {color: rgba(153, 204, 0, .8);}
+    20% {color: rgba(153, 207, 255, .8);}
+    30% {color: rgba(0, 100, 255, .8);}
+    40% {color: rgba(0, 157, 54, .8);}
+    50% {color: rgba(0, 212, 209, .8);}
+    60% {color: rgba(0, 255, 0, .8);}
+    70% {color: rgba(255, 255, 0, .8);}
+    80% {color: rgba(255, 143, 0, .8);}
+    90% {color: rgba(96, 232, 172, .8);}
+    10% {color: rgba(153, 0, 0, .8);}
+}
+@keyframes color {
+    0% {color: rgba(153, 0, 0, .8);}
+    10% {color: rgba(153, 204, 0, .8);}
+    20% {color: rgba(153, 207, 255, .8);}
+    30% {color: rgba(0, 100, 255, .8);}
+    40% {color: rgba(0, 157, 54, .8);}
+    50% {color: rgba(0, 212, 209, .8);}
+    60% {color: rgba(0, 255, 0, .8);}
+    70% {color: rgba(255, 255, 0, .8);}
+    80% {color: rgba(255, 143, 0, .8);}
+    90% {color: rgba(96, 232, 172, .8);}
+    10% {color: rgba(153, 0, 0, .8);}
+}
+
+@-webkit-keyframes jump {
+  0%{
+	transform: translateY(0);
+  }
+  25%{
+	transform: translateY(-20px);
+  }
+  50%{
+	transform: translateY(0);
+  }
+  50%{
+	transform: translateY(0);
+  }
+  75%{
+	transform: translateY(-20px);
+  }
+  100%{
+	transform: translateY(0);
+  }
+}
+
+@keyframes jump {
+  0%{
+	transform: translateY(0);
+  }
+  25%{
+	transform: translateY(-30px);
+  }
+  50%{
+	transform: translateY(0);
+  }
+  50%{
+	transform: translateY(0);
+  }
+  75%{
+	transform: translateY(-30px);
+  }
+  100%{
+	transform: translateY(0);
+  }
+}
+
+
+h1::selection,p::selection,button::selection {
+    color: rgba(100, 210, 200, .8);
+}
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background: url(../img/bg.PNG) no-repeat;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+#body {
+    -webkit-transition:  2s;
+       -moz-transition:  2s;
+         -o-transition:  2s;
+            transition:  2s; 
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.font {
+    font-family: comic sans ms, cursive;
+    text-shadow: 0 0 1px rgba(0, 128, 255, .8);
+
+}
+
+.color {
+        color: rgba(153, 0, 0, .8); 
+}
+h1 {
+    text-align: center;
+    font-size: 5em;
+    animation: color 40s linear infinite;
+
+}
+
+p {
+    font-size: 25px;
+    text-align: center;
+    animation: jump 10s linear infinite;
+}
+canvas {
+    opacity: 0;
+    display: block;
+    margin: 0 auto;
+    border:2px solid #333;
+    -webkit-transition:  2s;
+       -moz-transition:  2s;
+         -o-transition:  2s;
+            transition:  2s;
+}
+
+#buttons {
+    position: absolute;
+    width: 400px;
+    margin-left: -200px;
+    z-index: 10;
+    -webkit-transition:  2s;
+       -moz-transition:  2s;
+         -o-transition:  2s;
+            transition:  2s;
+    animation: show 2s forwards;
+}
+
+button {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 25px 0 25px;
+    width: 100px;
+    outline: none;
+    border:1px solid #26759E;
+    -webkit-box-shadow: #FEFFFF 0px 1px 3px inset;
+       -moz-box-shadow: #FEFFFF 0px 1px 3px inset; 
+         -o-box-shadow: #FEFFFF 0px 1px 3px inset; 
+            box-shadow: #FEFFFF 0px 1px 3px inset;
+    -webkit-border-radius: 7px;
+       -moz-border-radius: 7px;
+         -o-border-radius: 7px;
+            border-radius: 7px;
+    font-size: 18px;
+    text-shadow: 0px 1px 0 rgba(255,255,255,0.5);
+    font-weight:bold;
+    color: #05142E;
+    background: #3093C7;
+    -webkit-transition:  .4s;
+       -moz-transition:  .4s;
+         -o-transition:  .4s;
+            transition:  .4s;
+
+}
+
+button:hover {
+    background: #0271AB;
+    color: rgba(153, 0, 0, .8);
+    transform: scale(1.1);
+}
+
+.show {
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+    animation: hide 2s forwards !important;
+}
+
+.reset {
+    display: inline-block;
+    width: 150px;
+    margin-top: 10px;
+}
+
+#button5 {
+    margin-left: 100px;
+    
+}
+.bottomMenu {
+    display: none;
+    margin: 0 auto;
+    width: 500px;
+}
+
+.body {
+    background: url(../img/game-bg.jpg) no-repeat !important;
+    -webkit-background-size: cover !important;
+       -moz-background-size: cover !important;
+         -o-background-size: cover !important;
+            background-size: cover !important;
+}
+.dpNone {
+    display: none;
+}
+
+.dpBlock {
+    display: block;
+}
+
