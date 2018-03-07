@@ -1,5 +1,5 @@
 const path = require('path');
-const minifyCss = require('./myPlugin/myPlugin');
+const CompileProperties = require('./myPlugin/myPlugin');
 
 const config = {
     entry: './src/index.js',
@@ -8,7 +8,7 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
     },
     context: path.resolve(__dirname),
-    plugins: [new minifyCss({path: './src/target.css', output: './dist/minified.css'})]
+    plugins: [new CompileProperties({path: './src/local.properties', output: './dist/properties.js'})]
 };
 
 module.exports = config;

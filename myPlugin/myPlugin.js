@@ -1,24 +1,38 @@
 const fs = require('fs');
+const util = require('util');
 
-function apply(options, compiler) {
-    let minified;
-    compiler.plugin('compilation', function (compilation, params) {
-        fs.readFile(options.path, 'utf8', function(err, file){
-            minified = file.replace(/\s*/g, '');
+
+class CompileProperties {
+    constructor(options) {
+        this.options = options;
+        this.properties;
+    }
+
+    apply(compiler) {
+        compiler.plugin('compile', (params) => {
+            fs.readFile(this.options.path, 'latin1', (err, data) => {
+                this.properties = createObject(data);
+
+                fs.writeFile(this.options.output, `export const props = ${util.inspect(this.properties)}`)
+            });
+
         })
-    });
-
-    compiler.plugin('emit', function(compilation, callback){
-        fs.writeFile(options.output, minified)
-        callback();
-    })
+    }
 }
 
-function minifyCss(options) {
-    return {
-        apply: apply.bind(this, options)
-    };
-};
+function createObject(data) {
+    const regex = /^(\b.+)\s*=\s*(.*)/gm;
+    let match = regex.exec(data);
+    const tempObj = {}
+    while (match != null) {
+        tempObj[replaceDot(match[1])] = match[2];
+        match = regex.exec(data);
+    }
+    return tempObj;
+}
 
+function replaceDot(key) {
+    return key.replace(/\.\w/g, symbol => symbol[1].toUpperCase())
+}
 
-module.exports = minifyCss;
+module.exports = CompileProperties;
